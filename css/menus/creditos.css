@@ -1,0 +1,33 @@
+.canvas-container{
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+
+#canvas{
+    position: absolute;
+    display: block;
+    margin: auto;
+    background-color: #fea91d;
+}
+
+button {
+    background-color: #566e3d;
+    border-radius: 10px;
+    font-family: "Myriad Pro";
+    width: 250px;
+    height: 50px;
+    position: absolute;
+    display: block;
+    margin: auto;
+    color: #d6c14d;
+    border: none;
+    font-size: 30px;
+}
+
+#sairBtn{
+    left: 275px;
+    top: 508px;
+}

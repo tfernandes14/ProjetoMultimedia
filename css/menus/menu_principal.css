@@ -1,0 +1,63 @@
+.canvas-container{
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+
+#canvas{
+    position: absolute;
+    display: block;
+    margin: auto;
+    background-color: #fea91d;
+}
+
+button {
+    background-color: #566e3d;
+    border-radius: 10px;
+    font-family: "Myriad Pro";
+    width: 250px;
+    height: 50px;
+    position: absolute;
+    display: block;
+    margin: auto;
+    color: #d6c14d;
+    border: none;
+    font-size: 30px;
+}
+
+#jogarBtn{
+    left: 275px;
+    top: 299px;
+}
+
+#highscoresBtn{
+    left: 275px;
+    top: 371px;
+}
+
+#opcoesBtn{
+    left: 275px;
+    top: 443px;
+}
+
+#creditosBtn{
+    left: 275px;
+    top: 515px;
+}
+
+img{
+    width: 260px;
+    height: 360px;
+}
+
+#esq{
+    top: 100px;
+    left: 50px;
+}
+
+#dir{
+    padding-top: 100px;
+    padding-left: 50px;
+}

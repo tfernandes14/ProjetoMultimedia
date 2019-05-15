@@ -1,0 +1,54 @@
+.canvas-container{
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+
+#canvas{
+    position: absolute;
+    background-color: #fea91d;
+    display: block;
+    margin: auto;
+}
+
+div{
+    position: relative;
+    display: block;
+    margin: auto;
+}
+
+button {
+    background-color: #566e3d;
+    border-radius: 10px;
+    font-family: "Myriad Pro";
+    width: 250px;
+    height: 50px;
+    position: absolute;
+    display: block;
+    margin: auto;
+    color: #d6c14d;
+    border: none;
+    font-size: 30px;
+}
+
+#facilBtn{
+    left: 275px;
+    top: 220px;
+}
+
+#medioBtn{
+    left: 275px;
+    top: 292px;
+}
+
+#dificilBtn{
+    left: 275px;
+    top: 364px;
+}
+
+#voltarBtn{
+    left: 275px;
+    top: 508px;
+}

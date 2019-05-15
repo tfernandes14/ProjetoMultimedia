@@ -1,0 +1,72 @@
+.canvas-container{
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+
+#canvas{
+    display: block;
+    margin: auto;
+    position: absolute;
+}
+
+#HipoteseA{
+    position: absolute;
+    top: 310px;
+    left: 53px;
+    font-size: 40px;
+    padding: 10px;
+    height: 50px;
+    width: 750px;
+}
+
+#HipoteseB{
+    position: absolute;
+    top: 380px;
+    left: 53px;
+    font-size: 40px;
+    padding: 10px;
+    height: 50px;
+    width: 750px;
+}
+
+#HipoteseC{
+    position: absolute;
+    top: 450px;
+    left: 53px;
+    font-size: 40px;
+    padding: 10px;
+    height: 50px;
+    width: 750px;
+}
+
+#HipoteseD{
+    position: absolute;
+    top: 520px;
+    left: 53px;
+    font-size: 40px;
+    padding: 10px;
+    height: 50px;
+    width: 750px;
+}
+
+#Pergunta{
+    position: absolute;
+    top: 108px;
+    left: 58px;
+    font-size: 50px;
+    height: 200px;
+    width: 700px;
+}
+
+#Tempo{
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    height: 60px;
+    width: 300px;
+    text-align: center;
+    font-size: 20px;
+}

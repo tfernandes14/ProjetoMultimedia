@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;  /*inclui os valores de padding e border no tamanho total do elemento*/
+}
+
+body {
+    display: flex;
+    background: #fea91d;
+}
+
+.memory-game {
+    top: 50%;
+    width: 640px;
+    height: 600px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px; /*produzir o efeito 3D  1000px-> distancia entre o usário e o elemento ao longo do plano Z*/
+}
+
+.memory-card {
+    width: calc(25% - 10px);      /*4 por linha -10px de margem*/
+    height: calc(33.333% - 10px); /*3 por linha - 10px de margem*/
+    margin: 5px;
+    position: relative;
+    transform: scale(1);          /*voltar ao tamanho normal*/
+    transform-style: preserve-3d; /*dar 3 dimensões à carta*/
+    transition: transform .5s;    /*transição do movimento de meio segundo*/
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+
+.memory-card:active {        /*o ative é uma "pseudo classe"  para diminuir a carta ao clicar sobre a carta*/
+    transform: scale(0.97);    /*reduz a carta numa proporção de 1->0.97 */
+    transition: transform .2s; /*com uma duração de 2s*/
+}
+
+.memory-card.flip {           /*propriedade gerada no js*/
+    transform: rotateY(180deg); /*rodar 180 graus*/
+}
+
+.front-face, .back-face {
+    width: 100%;
+    height: 100%;
+    padding: 3px;
+    position: absolute;          /*Para meter na carta certa*/
+    border-radius: 3px;
+    background: #000000;
+    backface-visibility: hidden; /*mostrar o verso da carta*/
+}
+
+.front-face {
+    transform: rotateY(180deg);  /*complementa a backface-visibility: hidden;*/
+}
