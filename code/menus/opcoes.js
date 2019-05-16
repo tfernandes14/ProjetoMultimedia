@@ -9,7 +9,6 @@ function main() {
     var musicBtn = document.getElementById("musicBtn");
     var soundBtn = document.getElementById("soundBtn");
     var sairBtn = document.getElementById("sairBtn");
-    console.log("[OPÇÕES] " + cookie);
     var dois = cookie.split("%");
     var musicaCookie = dois[0].split("=");
     var auxSomCookie = dois[1].split("$");

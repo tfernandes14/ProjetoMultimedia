@@ -1,7 +1,7 @@
 "use strict";
 
 (function(){
-    document.cookie = "mu sica=On%som=On;path=/";
+    document.cookie = "musica=On%som=On;path=/";
 	window.addEventListener("load", main);
 }());
 
@@ -9,14 +9,16 @@ function main() {
 	var iframe = document.getElementById("iframe");
     var nomes = ["html/menus/menu_principal.html", "html/menus/dificuldade.html", "html/menus/opcoes.html", "html/menus/creditos.html", "html/floppyEagle/index.html", "html/memGame/memGame.html", "html/quizz/questionario.html"] ;
     showPage(iframe, nomes[0]);
+    var score = 0;
 
     var musica = new Audio("./resources/menus/musica_menu_principal.mp3");
     var som = new Audio("./resources/menus/sons.mp3");
-    console.log(som);
     musica.loop = true;
+    musica.autoplay = true;
     som.loop = true;
+    som.autoplay = true;
     musica.volume = 0.1;
-    som.volume = 0;
+    som.volume = 1;
     musica.play();
     som.play();
 
@@ -36,46 +38,58 @@ function main() {
         }
         else if (ev.data == "facil"){
             if (musica.muted && som.muted){
-                document.cookie = "musica=Off%som=Off$dificuldade=facil;path=/";
+                score = 0;
+                document.cookie = "musica=Off%som=Off$dificuldade=facil%tentativas=1%score=0;path=/";
             }
             else if (musica.muted && !som.muted){
-                document.cookie = "musica=Off%som=On$dificuldade=facil;path=/";
+                score = 0;
+                document.cookie = "musica=Off%som=On$dificuldade=facil%tentativas=1%score=0;path=/";
             }
             else if (!musica.muted && som.muted){
-                document.cookie = "musica=On%som=Off$dificuldade=facil;path=/";
+                score = 0;
+                document.cookie = "musica=On%som=Off$dificuldade=facil%tentativas=1%score=0;path=/";
             }
             else if (!musica.muted && !som.muted){
-                document.cookie = "musica=On%som=On$dificuldade=facil;path=/";
+                score = 0;
+                document.cookie = "musica=On%som=On$dificuldade=facil%tentativas=1%score=0;path=/";
             }
             showPage(iframe, nomes[4], musica, som);
         }
         else if (ev.data == "medio"){
             if (musica.muted && som.muted){
-                document.cookie = "musica=Off%som=Off$dificuldade=medio;path=/";
+                score = 0;
+                document.cookie = "musica=Off%som=Off$dificuldade=medio%tentativas=1%score=0;path=/";
             }
             else if (musica.muted && !som.muted){
-                document.cookie = "musica=Off%som=On$dificuldade=medio;path=/";
+                score = 0;
+                document.cookie = "musica=Off%som=On$dificuldade=medio%tentativas=1%score=0;path=/";
             }
             else if (!musica.muted && som.muted){
-                document.cookie = "musica=On%som=Off$dificuldade=medio;path=/";
+                score = 0;
+                document.cookie = "musica=On%som=Off$dificuldade=medio%tentativas=1%score=0;path=/";
             }
             else if (!musica.muted && !som.muted){
-                document.cookie = "musica=On%som=On$dificuldade=medio;path=/";
+                score = 0;
+                document.cookie = "musica=On%som=On$dificuldade=medio%tentativas=1%score=0;path=/";
             }
             showPage(iframe, nomes[4], musica, som);
         }
         else if (ev.data == "dificil"){
             if (musica.muted && som.muted){
-                document.cookie = "musica=Off%som=Off$dificuldade=dificil;path=/";
+                score = 0;
+                document.cookie = "musica=Off%som=Off$dificuldade=dificil%tentativas=1%score=0;path=/";
             }
             else if (musica.muted && !som.muted){
-                document.cookie = "musica=Off%som=On$dificuldade=dificil;path=/";
+                score = 0;
+                document.cookie = "musica=Off%som=On$dificuldade=dificil%tentativas=1%score=0;path=/";
             }
             else if (!musica.muted && som.muted){
-                document.cookie = "musica=On%som=Off$dificuldade=dificil;path=/";
+                score = 0;
+                document.cookie = "musica=On%som=Off$dificuldade=dificil%tentativas=1%score=0;path=/";
             }
             else if (!musica.muted && !som.muted){
-                document.cookie = "musica=On%som=On$dificuldade=dificil;path=/";
+                score = 0;
+                document.cookie = "musica=On%som=On$dificuldade=dificil%tentativas=1%score=0;path=/";
             }
             showPage(iframe, nomes[4], musica, som);
         }
@@ -94,10 +108,18 @@ function main() {
         else if (ev.data == "somOn"){
             som.muted = true;
         }
-        else if (ev.data == "memoria"){
+        else if (ev.data.startsWith("memoria")){
+            var aux = ev.data;
+            var pontos = aux.split("$");
+            score += pontos[1];
+            console.log("PONTUAÇÃO ATUAL: " + score);
             showPage(iframe, nomes[5], musica, som);
         }
-        else if (ev.data == "quizz"){
+        else if (ev.data.startsWith("quizz")){
+            var aux = ev.data;
+            var pontos = aux.split("$");
+            score += pontos[1];
+            console.log("PONTUAÇÃO ATUAL: " + score);
             showPage(iframe, nomes[6], musica, som);
         }
     }

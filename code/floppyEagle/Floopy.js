@@ -17,7 +17,7 @@ class Floopy{
 	}
 
 	gameLoop(){
-		    // UPDATE CALLS
+		// UPDATE CALLS
 
 	    // If the game is not paused and is not over, keep executing the physics and the logic
 	    if (!this.isPaused && !this.isGameOver && !this.isFinish) {

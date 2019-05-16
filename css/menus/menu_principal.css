@@ -10,7 +10,7 @@
     position: absolute;
     display: block;
     margin: auto;
-    background-color: #fea91d;
+    background: url("../../resources/menus/menu_principal.jpg");
 }
 
 button {

@@ -15,8 +15,6 @@ function main() {
     var highscoresBtn = document.getElementById("highscoresBtn");
     var opcoesBtn = document.getElementById("opcoesBtn");
     var creditosBtn = document.getElementById("creditosBtn");
-    /*var gif = new GIF("../resources/trofeu.gif");
-    ctx.drawImage(gif, 300, 200);*/
 
     function listenersButtons(ev){
         switch (ev.currentTarget.id) {
