@@ -20,11 +20,32 @@ var secondCard=null;*/
 function main(){
 	var cartasViradas = 0;
 	var pares = 0;
-	var cookie = document.cookie;	/* musica=Off % som=Off $ dificuldade=facil;path=/ */
-	var auxDificuldadeCookie = cookie.split("$");
+	var cookie = document.cookie;	/* musica=Off % som=Off $ dificuldade=facil % tentativas=1 % score=0;path=/ */
+	console.log("------------ memGame ------------");
+	console.log("COOKIE: " + cookie);
+	var auxCookie = cookie.split("$");  // musica=Off%som=Off     dificuldade=facil%tentativas=1%score=0
+	var auxCookie2 = auxCookie[0].split("%");	// musica=Off     som=Off
+	var auxCookie3 = auxCookie[1].split("%");	// dificuldade=facil     tentativas=1     score=0
+	var auxCookie4 = auxCookie2[0].split("=");	// musica     Off
+	var auxCookie5 = auxCookie2[1].split("=");	// som     Off
+	var auxCookie6 = auxCookie3[0].split("=");	// dificuldade     facil
+	var auxCookie7 = auxCookie3[1].split("=");	// tentativas     1
+    var auxCookie8 = auxCookie3[2].split("="); // score     0
+	var musica = auxCookie4[1];
+	var som = auxCookie5[1];
+	var dificuldade = auxCookie6[1];
+	var tentativas = auxCookie7[1];
+	var score = auxCookie8[1];
+	console.log("Cookie musica: " + musica);
+	console.log("Cookie som: " + som);
+	console.log("Cookie dificuldade: " + dificuldade);
+	console.log("Cookie tentativas: " + tentativas);
+	console.log("Cookie score: " + score);
+
+	/*var auxDificuldadeCookie = cookie.split("$");
 	var auxSom = auxDificuldadeCookie[0].split("%");
 	var auxSom2 = auxSom[1].split("=");
-	var som = auxSom2[1];
+	var som = auxSom2[1];*/
 	var tab;
 	var virar = new Audio("../../resources/memGame/woosh.mp3");
     var bom = new Audio("../../resources/memGame/cartasCerta.mp3");
@@ -55,7 +76,9 @@ function main(){
 			if (som != "Off"){
 				bom.play();
 			}
-			window.parent.postMessage("quizz", "*");
+			var mensagem = "quizz$" + tab.cartasViradas;
+			console.log("[memGame] mensagem: " + mensagem);
+			window.parent.postMessage(mensagem, "*");
 		}
 		else if (res){
 			sleep(800);
@@ -63,7 +86,6 @@ function main(){
 			tab.secondCard.removeEventListener('click', clicked);
 			tab.resetBoard();
 			if (som != "Off"){
-				console.log("ENTREI");
 				bom.play();
 			}
 		}
