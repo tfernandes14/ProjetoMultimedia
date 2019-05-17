@@ -1,0 +1,24 @@
+Floopy Eagle:
+    -> Se passar tudo a primeira, multiplicas os pontos por 3
+    -> Mais uma tentativa é só somar o total
+    -> Caso contrário, zero pontos
+
+Jogo da memória:
+    -> Total de cartas viradas (intervalos){
+        12 - 16 => 20p
+        17 - 21 => 15p
+        22 - 26 => 10p
+        27 - 31 => 5p
+        32+ => 1p
+    }
+
+Quizz:
+    -> Tempo (intervalos){
+        1 - 5s => 20p
+        6 - 10s => 15p
+        11 - 15s => 10p
+        Falhar => 0p
+    }
+
+Snake:
+    -> CARLOS CRLLLLS

@@ -10,4 +10,7 @@ class Pergunta{
 		this.opD = opD;
 		this.resposta = resposta;
 	}
+
+
+
 }

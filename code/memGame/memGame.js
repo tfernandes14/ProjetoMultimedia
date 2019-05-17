@@ -42,14 +42,12 @@ function main(){
 	console.log("Cookie tentativas: " + tentativas);
 	console.log("Cookie score: " + score);
 
-	/*var auxDificuldadeCookie = cookie.split("$");
-	var auxSom = auxDificuldadeCookie[0].split("%");
-	var auxSom2 = auxSom[1].split("=");
-	var som = auxSom2[1];*/
 	var tab;
 	var virar = new Audio("../../resources/memGame/woosh.mp3");
     var bom = new Audio("../../resources/memGame/cartasCerta.mp3");
     var mau = new Audio("../../resources/memGame/cartasErrada.mp3");
+    mau.volume = 0.2;
+    bom.volume = 0.2;
 	if (som == "Off"){
         tab = new Tabuleiro(false,false,null,null, cartasViradas, "", pares);
     }

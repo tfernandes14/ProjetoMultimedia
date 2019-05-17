@@ -2,21 +2,18 @@
     position: relative;
     display: block;
     margin: auto;
-    width: 800px;
-    height: 600px;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 #canvas{
     position: absolute;
+    display: block;
+    margin: auto;
+    left: 100px;
     background-color: #fea91d;
-    display: block;
-    margin: auto;
-}
-
-div{
-    position: relative;
-    display: block;
-    margin: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 button {
@@ -33,7 +30,23 @@ button {
     font-size: 30px;
 }
 
-#voltarBtn{
+#musicBtn{
+    background-color: initial;
+    left: 525px;
+    top: 208px;
+    width: 100px;
+    height: 100px;
+}
+
+#soundBtn{
+    background-color: initial;
+    left: 525px;
+    top: 370px;
+    width: 100px;
+    height: 100px;
+}
+
+#sairBtn{
     left: 275px;
     top: 508px;
 }

@@ -10,6 +10,8 @@ function main(){
     ctx.fillStyle = "#0c6384";
     ctx.font = "100px Showcard Gothic";
     ctx.fillText("Highscores", 93, 160);
+    var img = document.getElementById("tabela");
+    ctx.drawImage(img, 50, 185);
     var voltarBtn = document.getElementById("voltarBtn");
     voltarBtn.addEventListener("click", listenersButtons);
 
