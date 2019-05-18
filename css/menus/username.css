@@ -27,11 +27,18 @@ button {
     font-size: 30px;
 }
 
-#sairBtn{
-    left: 275px;
-    top: 508px;
+#nameBtn{
+    font-size: 30px;
+    position: absolute;
+    background-color: #0c6384;
+    left: 325px;
+    top: 400px;
 }
 
 #inputBox{
-    /* Meter código aqui */
+    background-color: #fea91d;
+    position: absolute;
+    left : 375px;
+    top : 270px;
+    font-size: 30px;
 }
