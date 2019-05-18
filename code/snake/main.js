@@ -50,6 +50,8 @@ jogo.pontos = 0;
 jogo.start();
 jogo.loop();
 
+jogo.loop().
+
 //Teclado funcionar
 document.onkeydown = function(event) {
 	if(typeof snakeRei !== 'undefined'){

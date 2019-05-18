@@ -3,10 +3,9 @@
 (function(){
 	window.addEventListener("load", main);
 }());
-	
+
 function main(){
 	var cookie = document.cookie;	/* musica=Off % som=Off $ dificuldade=facil % tentativas=1 % score=0;path=/ */
-	console.log("COOKIE: " + cookie);
 	var auxCookie = cookie.split("$");  // musica=Off%som=Off     dificuldade=facil%tentativas=1%score=0
 	var auxCookie2 = auxCookie[0].split("%");	// musica=Off     som=Off
 	var auxCookie3 = auxCookie[1].split("%");	// dificuldade=facil     tentativas=1     score=0
@@ -19,12 +18,11 @@ function main(){
 	var som = auxCookie5[1];
 	var dificuldade = auxCookie6[1];
 	var tentativas = auxCookie7[1];
-	var score = auxCookie8[1];
-	var scoreGame = 0;
+	var score = auxCookie8[1];  // Pontuaçao ate ao momento
+	var scoreGame = 0;          // Pontuaçao desta tentativas
 
 	var canvas = document.getElementById('game-canvas');
     var ctx = canvas.getContext('2d');
-    console.log("TENTATIVAS INICIO: " + tentativas);
     ctx.font = 'bold 56px Comic Sans MS';
     ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
@@ -50,7 +48,7 @@ function main(){
 	game.gameLoop();
 
    	addEventListener("keyup", keyUpPressed);
-		
+
     function keyUpPressed(ev){
         game.pressed = false;
     }
@@ -65,63 +63,43 @@ function main(){
 			game.pressed = true; // Mark this true so the player can not keep the button pressed
 		}
 		if (ev.code == "Enter") {
-		    var min, pontos;
-	        // If the game is in a game over state, refresh the page to restart the game
-	        if (game.isGameOver && tentativas != 2) {
-	        	tentativas++;
-	        	console.log("game.score1: " + game.score);
-	        	document.cookie = "musica=" + musica + "%som=" + som + "$dificuldade=" + dificuldade + "%tentativas=" + tentativas + "%score=" + game.score + ";path=/";
+		    var pontos;
+		    // Perdeu e ainda nao esgotou as 3 tentativas
+		    if (game.isGameOver && tentativas != 3){
+		    	tentativas++;
+		    	pontos = parseInt(game.score) + parseInt(score);
+		    	document.cookie = "musica=" + musica + "%som=" + som + "$dificuldade=" + dificuldade + "%tentativas=" + tentativas + "%score=" + pontos + ";path=/";
 	            window.location.reload();
-	        }
-	        // Second try - losea and advance
-	        else if (game.isGameOver && tentativas == 2){
-	        	document.cookie = "musica=" + musica + "%som=" + som + "$dificuldade=" + dificuldade + "%tentativas=" + tentativas + "%score=" + score + ";path=/";
-	        	if (dificuldade == "facil"){
-	        		min = 2;	// Verificar como esta noo Floppy.js e ver o valor de la do minimo
-				}
-	        	else if (dificuldade == "medio"){
-	        		min = 2;	// Verificar como esta noo Floppy.js e ver o valor de la do minimo
-				}
-	        	else if (dificuldade == "dificil"){
-	        		min = 1;	// Verificar como esta noo Floppy.js e ver o valor de la do minimo
-				}
-	        	// Passou a segunda
-	        	if (game.score == min && score != 0){
-	        	    console.log("So passei a segunda vez");
-	        		pontos = score + game.score;
-	        	}
-	        	else{
-	        		pontos = parseInt(game.score) + parseInt(score) ;
-				}
-	        	window.parent.postMessage("memoria$" + pontos, "*");
 			}
+		    // Perdeu e esgotou as 3 tentativas
+		    else if (game.isGameOver && tentativas == 3){
+                pontos = parseInt(game.score) + parseInt(score);
+                document.cookie = "musica=" + musica + "%som=" + som + "$dificuldade=" + dificuldade + "%tentativas=" + tentativas + "%score=" + pontos + ";path=/";
+                window.parent.postMessage("memoria$" + pontos, "*");
+			}
+		    // Passou o jogo à primeira
+		    else if (game.isFinish && tentativas == 1){
+		        pontos = parseInt(game.score) + parseInt(score);
+		        pontos *= 5;
+                document.cookie = "musica=" + musica + "%som=" + som + "$dificuldade=" + dificuldade + "%tentativas=" + tentativas + "%score=" + pontos + ";path=/";
+                window.parent.postMessage("memoria$" + pontos, "*");
+			}
+		    // Passou o jogo à segunda
+		    else if (game.isFinish && tentativas == 2){
+		        pontos = parseInt(game.score) + parseInt(score);
+                document.cookie = "musica=" + musica + "%som=" + som + "$dificuldade=" + dificuldade + "%tentativas=" + tentativas + "%score=" + pontos + ";path=/";
+                window.parent.postMessage("memoria$" + pontos, "*");
+			}
+		    // Passou o jogo à terceira
+		    else if (game.isFinish && tentativas == 3){
+		        pontos = parseInt(game.score) + parseInt(score);
+                document.cookie = "musica=" + musica + "%som=" + som + "$dificuldade=" + dificuldade + "%tentativas=" + tentativas + "%score=" + pontos + ";path=/";
+                window.parent.postMessage("memoria$" + pontos, "*");
+            }
 	        // If the game is paused, unpause it
 	        else if (game.isPaused) {
 	            game.isPaused = false;
 	        }
-
-	        else if (game.isFinish){
-	        	if (dificuldade == "facil"){
-	        		min = 2;	// Verificar como esta noo Floppy.js e ver o valor de la do minimo
-				}
-	        	else if (dificuldade == "medio"){
-	        		min = 2;	// Verificar como esta noo Floppy.js e ver o valor de la do minimo
-				}
-	        	else if (dificuldade == "dificil"){
-	        		min = 1;	// Verificar como esta noo Floppy.js e ver o valor de la do minimo
-				}
-	        	if (game.score == min && score != 0){
-	        	    console.log("So passei a segunda vez");
-	        	    pontos = min + parseInt(score);
-				}
-	        	else if (game.score == min){
-	        	    pontos = min * 3;
-                }
-	        	else{
-	        		pontos = parseInt(game.score) + parseInt(score);
-				}
-	        	window.parent.postMessage("memoria$" + pontos, "*");
-			}
 		}
 		 // ESC button: Pause the game
 	    if (ev.code == "Escape" && !game.isPaused && !game.isGameOver) {

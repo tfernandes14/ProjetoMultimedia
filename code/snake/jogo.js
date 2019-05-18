@@ -6,7 +6,7 @@ class Jogo{
 
 	//ESCREVE A PONTUAÇÃO NO CANTO INFERIOR ESQUERDO
 	showPontos(){
-		canvas.paintText("Pontuacao: " + this.pontos);
+		canvas.paintText("Pontuação: " + this.pontos);
 	}
 
 	//TRATAR DE MANTER O JOGO A CORRER ATÉ ORDEM CONTRARIA

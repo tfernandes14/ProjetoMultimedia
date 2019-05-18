@@ -22,7 +22,7 @@ function main(){
 	var pares = 0;
 	var cookie = document.cookie;	/* musica=Off % som=Off $ dificuldade=facil % tentativas=1 % score=0;path=/ */
 	console.log("------------ memGame ------------");
-	console.log("COOKIE: " + cookie);
+	// console.log("COOKIE: " + cookie);
 	var auxCookie = cookie.split("$");  // musica=Off%som=Off     dificuldade=facil%tentativas=1%score=0
 	var auxCookie2 = auxCookie[0].split("%");	// musica=Off     som=Off
 	var auxCookie3 = auxCookie[1].split("%");	// dificuldade=facil     tentativas=1     score=0
@@ -36,10 +36,10 @@ function main(){
 	var dificuldade = auxCookie6[1];
 	var tentativas = auxCookie7[1];
 	var score = auxCookie8[1];
-	console.log("Cookie musica: " + musica);
+	/*console.log("Cookie musica: " + musica);
 	console.log("Cookie som: " + som);
 	console.log("Cookie dificuldade: " + dificuldade);
-	console.log("Cookie tentativas: " + tentativas);
+	console.log("Cookie tentativas: " + tentativas);*/
 	console.log("Cookie score: " + score);
 
 	var tab;
@@ -74,7 +74,7 @@ function main(){
 			if (som != "Off"){
 				bom.play();
 			}
-			var mensagem = "quizz$" + tab.cartasViradas;
+			var mensagem = "quizz$" + (100 - tab.cartasViradas);
 			console.log("[memGame] mensagem: " + mensagem);
 			window.parent.postMessage(mensagem, "*");
 		}

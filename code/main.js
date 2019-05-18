@@ -1,11 +1,11 @@
 "use strict";
 
 (function(){
-    document.cookie = "musica=On%som=On;path=/";
 	window.addEventListener("load", main);
 }());
 
 function main() {
+    document.cookie = "musica=On%som=On;path=/";
 	var iframe = document.getElementById("iframe");
     var nomes = ["html/menus/menu_principal.html", "html/menus/dificuldade.html", "html/menus/opcoes.html", "html/menus/creditos.html", "html/floppyEagle/index.html", "html/memGame/memGame.html", "html/quizz/questionario.html", "html/menus/highscores.html", "html/snake/snake.html"];
     showPage(iframe, nomes[0]);
@@ -17,7 +17,7 @@ function main() {
     musica.autoplay = true;
     som.loop = true;
     som.autoplay = true;
-    musica.volume = 0;
+    musica.volume = 0.1;
     som.volume = 1;
     musica.play();
     som.play();
