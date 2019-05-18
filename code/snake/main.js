@@ -1,7 +1,9 @@
-var canvas = new Canvas();
-var snakeRei;
-var comida;
-var stopAnimation;
+var canvas = new Canvas(); //Cria novo objeto jogo
+let snakeRei;
+let comida;
+let stopAnimation;
+
+var win;
 
 var cookie = document.cookie;	/* musica=Off % som=Off $ dificuldade=facil % tentativas=1 % score=0;path=/ */
 console.log("------------quizz ------------");
@@ -25,16 +27,7 @@ console.log("[QUIZZ] Cookie dificuldade: " + dificuldade);
 console.log("[QUIZZ] Cookie tentativas: " + tentativas);
 console.log("[QUIZZ] Cookie score: " + score);
 
-//Classe CANVAS
-canvas.element = document.getElementById('myCanvas');
-canvas.ctx = canvas.element.getContext('2d');
-canvas.width = canvas.element.getAttribute('width'); //Vai buscar a largura da canvas criada no HTML
-canvas.height = canvas.element.getAttribute('height'); //Vai buscar o comprimento da canvas criada no HTML
-canvas.unidade = 20; //Altura e largura de cada quadradinho
-
-canvas.reset(); //Vai desenhar a canvas original
-
-var jogo = new Jogo();//Cria nova classe jogo
+var jogo = new Jogo(); //Cria novo objeto jogo
 if (dificuldade == "facil"){
 	jogo.fps = 10;	//fps, aka velocidade da snake
 }
@@ -44,13 +37,8 @@ else if (dificuldade == "medio"){
 else if (dificuldade == "dificil"){
 	jogo.fps = 15;
 }
-jogo.pontos = 0;
 
-//CALL INICIAL PARA COMEÇAR O JOGO
-jogo.start();
-jogo.loop();
-
-jogo.loop().
+jogo.startFirst();
 
 //Teclado funcionar
 document.onkeydown = function(event) {
@@ -74,6 +62,8 @@ document.onkeydown = function(event) {
 			jogo.restart();	//Restart do jogo
 		} else if(key == '46'){ //DELETE
 			jogo.pontos++; //adiciona 1 ponto (saltar rapido o jogo)
+			console.log('Pontos:  ' + jogo.getPontos());
 		}
+
 	}
 };

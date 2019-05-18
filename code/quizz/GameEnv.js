@@ -25,6 +25,8 @@ class GameEnv{
 		this.fim = false;
 		this.certas = 0;
 		this.som = som;
+		console.log("[Som no GameEnv] this.som: " + this.som);
+		console.log("[Som no GameEnv] som: " + som);
 	}
 
 	carregaPergunta1(){ //carrega a primeira pergunta
@@ -132,6 +134,7 @@ class GameEnv{
 		}
 		this.certas++;
 		var certa = new Audio("../../resources/quizz/crisCerta.mp3");
+		console.log("SDFOJSDFKDSFKJSD%%%% " + this.som);
 		if (this.som != "Off"){
 			certa.play();
 		}
@@ -162,6 +165,7 @@ class GameEnv{
 				break;
 		}
 		var errado = new Audio("../../resources/quizz/respostaErrada.mp3");
+		console.log("SDFOJSDFKDSFKJSD%%%% " + this.som);
 		if (this.som != "Off"){
 			errado.play();
 		}
@@ -209,6 +213,6 @@ class GameEnv{
 		this.botaoD.draw(this.ctx);
 		console.log("Proxima perguntas");
 		this.trocaPergunta();
-		iniciajogo(this, this.canvas);
+		iniciajogo(this, this.canvas, this.som);
 	}
 }

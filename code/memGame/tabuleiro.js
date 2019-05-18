@@ -7,9 +7,7 @@ class Tabuleiro{
 		this.firstCard = firstCard;
 		this.secondCard = secondCard;
 		this.cartasViradas = cartasViradas;
-		if (audio != ""){
-            this.audio = new Audio(audio);
-        }
+		this.audio = audio;
 		this.pares = pares;
 	}
 
@@ -25,7 +23,10 @@ class Tabuleiro{
 
 		if (this.hasFlippedCard == false) {
 			// first click
-            this.audio.play();
+			if (this.audio != ""){
+				var audio = new Audio(this.audio);
+				audio.play();
+			}
 			this.cartasViradas++;
 			this.hasFlippedCard = true;
 	    	this.firstCard = target;        /*guardar a referencia da 1 carta clicada*/

@@ -98,7 +98,8 @@ class Snake{
 	//Deteta quando a pontuação chega aos 10 pontos
 	pontuacao(){
 		if(jogo.pontos == 10){
-			jogo.vitoria();
+			document.cookie = "musica=" + musica + "%som=" + som + "$dificuldade=" + dificuldade + "%tentativas=" + tentativas + "%score=" + jogo.pontos + ";path=/";
+			window.parent.postMessage("username$" + jogo.pontos, "*");
 		}
 	}
 

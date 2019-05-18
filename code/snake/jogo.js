@@ -27,9 +27,32 @@ class Jogo{
 		}, 1000 / jogo.fps);
 	}
 	
-	//DÁ START NO JOGO COM AS DEFINIÇÕES IMBUTIDAS
+	startFirst(){
+
+		canvas.element = document.getElementById('myCanvas');
+		canvas.ctx = canvas.element.getContext('2d');
+		canvas.width = canvas.element.getAttribute('width'); //Vai buscar a largura da canvas criada no HTML
+		canvas.height = canvas.element.getAttribute('height'); //Vai buscar o comprimento da canvas criada no HTML
+		canvas.unidade = 20; //Altura e largura de cada quadradinho
+
+		canvas.reset(); //Vai desenhar a canvas original
+		
+		win = false;
+		this.fps = 10; //fps, aka velocidade da snake
+		this.pontos = 0;
+
+		//CALL INICIAL PARA COMEÇAR O JOGO
+		this.start();
+		this.loop();
+	}
+
+	getPontos(){
+		return this.pontos;
+	}
+
 	start(){
 		//Começa o jogo com uma snake nas coord (5,5) com um comprimento de 5 unidades
+		win = false;
 		snakeRei = new Snake();
 		snakeRei.length = 5;
 		snakeRei.bodyColour = 'green';
@@ -43,15 +66,16 @@ class Jogo{
 		comida.coordRandom();
 		comida.verificaColisao();
 		comida.show();
-		jogo.pontos = 0;
+		this.fps = 10;
+		this.pontos = 0;
 		stopAnimation = false;
 	}
 
 	//ECRÃ DE GAME OVER
 	over(){
 		canvas.reset('lightblue', 'black');
-		canvas.paintText('GAME OVER', 200, 200, 'white', '80px Consolas');
-		canvas.paintText('Carregue no espaço para tentar de novo!', 190, 250, 'white', '20px Consolas');
+		canvas.paintText('GAME OVER', 50, 200, 'white', '80px Consolas');
+		canvas.paintText('Carregue no espaço para tentar de novo!', 40, 250, 'white', '20px Consolas');
 		stopAnimation = true;
 	}
 
@@ -65,9 +89,9 @@ class Jogo{
 	//ECRÃ DE VITÓRIA
 	vitoria(){
 		canvas.reset('gold', 'white');
-		canvas.paintText('Vitória', 250, 220, 'white', '90px Consolas');
-		canvas.paintText('Carregue no espaço se quiser jogar de novo!', 240, 270, 'white', '15px Consolas');
+		canvas.paintText('Vitória', 50, 220, 'white', '90px Consolas');
+		canvas.paintText('Carregue no espaço se quiser jogar de novo!', 40, 270, 'white', '15px Consolas');
 		stopAnimation = true;
+		win = true;
 	}
-
 }

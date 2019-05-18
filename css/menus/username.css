@@ -13,7 +13,7 @@
     background-color: #fea91d;
 }
 
-button {
+#nameBtn {
     background-color: #566e3d;
     border-radius: 10px;
     font-family: "Myriad Pro";
@@ -25,20 +25,15 @@ button {
     color: #d6c14d;
     border: none;
     font-size: 30px;
-}
-
-#nameBtn{
-    font-size: 30px;
-    position: absolute;
-    background-color: #0c6384;
-    left: 325px;
-    top: 400px;
+    left: 275px;
+    top: 508px;
 }
 
 #inputBox{
     background-color: #fea91d;
     position: absolute;
-    left : 375px;
-    top : 270px;
-    font-size: 30px;
+    left : 190px;
+    top : 355px;
+    font-size: 40px;
+    font-family: "Myriad Pro";
 }
