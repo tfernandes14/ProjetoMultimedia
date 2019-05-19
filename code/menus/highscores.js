@@ -15,14 +15,14 @@ function main(){
     var voltarBtn = document.getElementById("voltarBtn");
     voltarBtn.addEventListener("click", listenersButtons);
 
-    if (localStorage.getItem('facil') === null){
-        console.log("[OPÇOES] Local Storage - fácil: vazio");
-    }
-    else{
+    if (localStorage.getItem('facil') !== null){
         console.log("[OPÇOES] Local Storage - fácil: " + localStorage.getItem('facil'));
+        var lido = localStorage.getItem('facil');
+        lido = lido.split("/");     // tff 154   fg 150    ca 78
+
     }
 
-    if (localStorage.getItem('medio') === null){
+    /*if (localStorage.getItem('medio') === null){
         console.log("[OPÇOES] Local Storage - médio: vazio");
     }
     else{
@@ -34,7 +34,9 @@ function main(){
     }
     else{
         console.log("[OPÇOES] Local Storage - difícil: " + localStorage.getItem('dificil'));
-    }
+    }*/
+
+
 
     function listenersButtons(ev){
         if (ev.currentTarget.id === ("voltarBtn")) {

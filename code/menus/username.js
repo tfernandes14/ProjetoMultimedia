@@ -17,7 +17,7 @@ function main() {
     ctx.fillText("Como se chama?", 220,280);
     var cookie = document.cookie;	/* musica=Off % som=Off $ dificuldade=facil % tentativas=1 % score=0;path=/ */
 	console.log("------------ username ------------");
-	console.log("[USERNAME] COOKIE: " + cookie);
+	// console.log("[USERNAME] COOKIE: " + cookie);
 	var auxCookie = cookie.split("$");  // musica=Off%som=Off     dificuldade=facil%tentativas=1%score=0
 	var auxCookie3 = auxCookie[1].split("%");	// dificuldade=facil     tentativas=1     score=0
 	var auxCookie6 = auxCookie3[0].split("=");	// dificuldade     facil
@@ -36,21 +36,22 @@ function clicked(ev, dificuldade, score){
     console.log(inputBox.value);
 
     if (localStorage.length == 0){
-        localStorage.setItem('facil','null');
-        localStorage.setItem('medio','null');
-        localStorage.setItem('dificil','null');
+        localStorage.setItem('facil', 'null');
+        localStorage.setItem('medio', 'null');
+        localStorage.setItem('dificil', 'null');
     }
 
     var lido, string, i, j, fim, escolhido;
     switch(dificuldade){
         case('facil'):
-            lido = localStorage.getItem('facil');
-            if (lido === 'null'){
+            lido= localStorage.getItem('facil');
+            if (lido=== 'null'){
                 localStorage.removeItem('facil');
-                localStorage.setItem('facil', inputBox.value + '' + score +'/');
+                localStorage.setItem('facil', inputBox.value+ ' ' + score +'/');
             }
             else{
                 lido= lido.split('/');
+                lido.pop();
                 if (lido.length != 3){
                     fim = new Array(lido.length +1 );
                 }
@@ -59,31 +60,38 @@ function clicked(ev, dificuldade, score){
                 }
                 j=0;
                 for (i = 0; i < fim.length; i++) {
-                    escolhido= lido[j];
-                    escolhido.split('/');
-                    if (score > parseInt(escolhido[1])){
-                        fim[i]= inputBox.value + ' '+ score;
-                        for ( i = i+1 ;i <fim.length ; i++ ) {
-                            fim[i]= lido[j];
-                            j++
-                        }
+                    escolhido = lido[j];
+                    if (escolhido === undefined && i < fim.length){
+                        fim[i] = inputBox.value + ' ' + score;
+                        // i++;
                     }
                     else{
-                        fim[i]=lido[j];
-                        j++;
+                        escolhido.split(' ');
+                        if (score > parseInt(escolhido[1])){
+                            fim[i]= inputBox.value + ' ' + score;
+                            for ( i = i+1 ;i <fim.length ; i++ ) {
+                                fim[i]= lido[j];
+                                j++
+                            }
+                        }
+                        else{
+                            fim[i]=lido[j];
+                            j++;
+                        }
                     }
                 }
                 string = '';
-                for (i = 0; fim.length; i++) {
-                    string = string + fim[i]+'/';
+                for (i = 0; i < fim.length; i++) {
+                    string = string + fim[i] + '/';
                 }
-                localStorage.setItem('Fácil', string);
+                localStorage.setItem('facil', string);
             }
+            break;
         case('medio'):
             lido= localStorage.getItem('medio');
             if (lido=== 'null'){
                 localStorage.removeItem('medio');
-                localStorage.setItem('medio', inputBox.value+ '' + score +'/');
+                localStorage.setItem('medio', inputBox.value+ ' ' + score +'/');
             }
             else{
                 lido= lido.split('/');
@@ -96,7 +104,8 @@ function clicked(ev, dificuldade, score){
                 j=0;
                 for (i = 0; i < fim.length; i++) {
                     escolhido= lido[j];
-                    escolhido.split('/');
+                    console.log(escolhido);
+                    escolhido.split(' ');
                     if (score > parseInt(escolhido[1])){
                         fim[i]= inputBox.value + ' ' + score;
                         for ( i = i+1 ;i <fim.length ; i++ ) {
@@ -115,11 +124,12 @@ function clicked(ev, dificuldade, score){
                 }
                 localStorage.setItem('medio', string);
             }
+            break;
         case('dificil'):
             lido= localStorage.getItem('dificil');
             if (lido=== 'null'){
                 localStorage.removeItem('dificil');
-                localStorage.setItem('dificil', inputBox.value+ '' + score +'/');
+                localStorage.setItem('dificil', inputBox.value+ ' ' + score +'/');
             }
             else{
                 lido= lido.split('/');
@@ -132,7 +142,8 @@ function clicked(ev, dificuldade, score){
                 j=0;
                 for (i = 0; i < fim.length; i++) {
                     escolhido= lido[j];
-                    escolhido.split('/');
+                    console.log(escolhido);
+                    escolhido.split(' ');
                     if (score > parseInt(escolhido[1])){
                         fim[i]= inputBox.value + ' ' + score;
                         for ( i = i+1 ;i <fim.length ; i++ ) {
@@ -151,6 +162,7 @@ function clicked(ev, dificuldade, score){
                 }
                 localStorage.setItem('dificil', string);
             }
+            break;
     }
     window.parent.postMessage("voltar", '*');
 }
