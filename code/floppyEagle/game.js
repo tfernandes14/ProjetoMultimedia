@@ -113,7 +113,9 @@ function main(){
 
 	    // F button: Finish the game
 		if (ev.code == "KeyF"){
-	    	window.parent.postMessage("memoria", "*");
+			pontos = 45;
+			document.cookie = "musica=" + musica + "%som=" + som + "$dificuldade=" + dificuldade + "%tentativas=" + tentativas + "%score=" + pontos + ";path=/";
+	    	window.parent.postMessage("memoria$45", "*");
 		}
 	}
 }

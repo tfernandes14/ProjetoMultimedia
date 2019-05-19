@@ -26,13 +26,13 @@ class Floopy{
 	        this.background1.update();
 	        this.background2.update();
 	        this.player.update(this);
-	        if (this.dificuldade == "facil" && this.score == 2){
+	        if (this.dificuldade == "facil" && this.score == 5){
 	        	this.isFinish = true;
 			}
-	        else if (this.dificuldade == "medio" && this.score == 2){
+	        else if (this.dificuldade == "medio" && this.score == 10){
 	        	this.isFinish = true;
 			}
-	        else if (this.dificuldade == "dificil" && this.score == 1){
+	        else if (this.dificuldade == "dificil" && this.score == 15){
 	        	this.isFinish = true;
 			}
 	    }
@@ -55,9 +55,11 @@ class Floopy{
 	    if (this.isPaused) {
 	        // If the game is paused, show the necessary information
 	        drawTint(this.ctx,0, 0, 360, 600);
-	        drawText(this.ctx,'Carregue', 180, 255);
-	        drawText(this.ctx,'no "Enter"', 180, 325);
-	        drawText(this.ctx,'para jogar!', 180, 395);
+	        drawText(this.ctx,'Carregue', 180, 185);
+	        drawText(this.ctx,'no "Enter"', 180, 255);
+	        drawText(this.ctx,'para iniciar!', 180, 325);
+	        drawText(this.ctx,'Seta ⬆', 180, 395);
+	        drawText(this.ctx,'para jogar!', 180, 465);
 	        if (this.score > 0) {
 	            drawText(this.ctx,this.score, 180, 52);
 	        }

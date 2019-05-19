@@ -5,31 +5,36 @@
 }());
 
 function main() {
-    var cookie = document.cookie;
     var musicBtn = document.getElementById("musicBtn");
     var soundBtn = document.getElementById("soundBtn");
     var sairBtn = document.getElementById("sairBtn");
-    var dois = cookie.split("%");
-    var musicaCookie = dois[0].split("=");
-    var auxSomCookie = dois[1].split("$");
-    var somCookie = auxSomCookie[0].split("=");
-    var musica;
-    var som;
-    if (musicaCookie[1] == "On"){
+    var cookie = document.cookie;	/* musica=Off % som=Off $ dificuldade=facil % tentativas=1 % score=0;path=/ */
+	console.log("------------ opções ------------");
+	console.log("[OPÇOES] COOKIE: " + cookie);
+	var auxCookie = cookie.split("$");  // musica=Off%som=Off     dificuldade=facil%tentativas=1%score=0
+	var auxCookie2 = auxCookie[0].split("%");	// musica=Off     som=Off
+	var auxCookie4 = auxCookie2[0].split("=");	// musica     Off
+	var auxCookie5 = auxCookie2[1].split("=");	// som     Off
+	var musicaCookie = auxCookie4[1];
+	var somCookie = auxCookie5[1];
+	var musica, som;
+	console.log("[OPÇOES] Cookie musica: " + musicaCookie);
+	console.log("[OPÇOES] Cookie som: " + somCookie);
+    if (musicaCookie == "On"){
         musicBtn.innerHTML = "<img src='../../resources/menus/soundOnBtn.png'>";
-        musica = 1;
+        musica = 0;
     }
     else{
         musicBtn.innerHTML = "<img src='../../resources/menus/soundOffBtn.png'>";
-        musica = 0;
+        musica = 1;
     }
-    if (somCookie[1] == "On"){
+    if (somCookie == "On"){
         soundBtn.innerHTML = "<img src='../../resources/menus/soundOnBtn.png'>";
-        som = 1;
+        som = 0;
     }
     else {
         soundBtn.innerHTML = "<img src='../../resources/menus/soundOffBtn.png'>";
-        som = 0;
+        som = 1;
     }
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
@@ -40,7 +45,7 @@ function main() {
     ctx.font = "50px Myriad Pro";
     ctx.fillText("Música", 184, 272);
     ctx.fillText("Sons", 184, 434);
-
+    console.log("[OPÇOES] musica: " + musica);
     function listenersButtons(ev){
         switch (ev.currentTarget.id) {
             case("sairBtn"):

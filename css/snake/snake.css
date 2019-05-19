@@ -2,8 +2,7 @@
     position: relative;
     display: block;
     margin: auto;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 #canvas{
@@ -12,8 +11,7 @@
     margin: auto;
     left: 100px;
     background-color: #fea91d;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 button {

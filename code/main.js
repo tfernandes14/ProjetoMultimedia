@@ -6,7 +6,7 @@
 
 function main() {
     document.cookie = "musica=On%som=On;path=/";
-    console.log(document.cookie);
+    // console.log(document.cookie);
 	var iframe = document.getElementById("iframe");
     var nomes = ["html/menus/menu_principal.html", "html/menus/dificuldade.html", "html/menus/opcoes.html", "html/menus/creditos.html", "html/floppyEagle/index.html", "html/memGame/memGame.html", "html/quizz/questionario.html", "html/menus/highscores.html", "html/snake/snake.html", "html/menus/username.html"];
     showPage(iframe, nomes[0]);
@@ -18,6 +18,9 @@ function main() {
     musica.loop = true;
     musica.volume = 0.1;
     musica.play();
+    localStorage.setItem('facil', 'null/');
+    localStorage.setItem('medio', 'null/');
+    localStorage.setItem('dificil', 'null/');
 
     window.addEventListener("message", auxMensagem);
     function auxMensagem(ev) {

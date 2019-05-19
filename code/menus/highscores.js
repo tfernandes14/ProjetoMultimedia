@@ -5,6 +5,7 @@
 }());
 
 function main(){
+    console.log("----------- highscores -----------");
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     ctx.fillStyle = "#0c6384";
@@ -14,29 +15,46 @@ function main(){
     ctx.drawImage(img, 50, 185);
     var voltarBtn = document.getElementById("voltarBtn");
     voltarBtn.addEventListener("click", listenersButtons);
+    var lido;
+    var coisaFacil = localStorage.getItem('facil');
+    console.log("[HIGHSCORES] coisaFacil: " + coisaFacil);
+    var coisaMedio = localStorage.getItem('medio');
+    console.log("[HIGHSCORES] coisaMedio: " + coisaMedio);
+    var coisaDificil = localStorage.getItem('dificil');
+    console.log("[HIGHSCORES] coisaDificil: " + coisaDificil);
 
-    if (localStorage.getItem('facil') !== null){
-        console.log("[OPÇOES] Local Storage - fácil: " + localStorage.getItem('facil'));
-        var lido = localStorage.getItem('facil');
-        lido = lido.split("/");     // tff 154   fg 150    ca 78
-
+    if (coisaFacil !== 'null/'){
+        console.log("[HIGHSCORES] Local Storage - fácil: " + coisaFacil);
+        lido = coisaFacil.split("/");     // tff 154   fg 150    ca 78
+        ctx.fillStyle = "#d6c14d";
+        for (let i = 0; i < lido.length; i++){
+            console.log((i + 1) + "º lugar: " + lido[i]);
+            ctx.font = "50px Myriad Pro";
+            ctx.fillText(lido[i], 100, 300 + 80 * i);
+        }
     }
 
-    /*if (localStorage.getItem('medio') === null){
-        console.log("[OPÇOES] Local Storage - médio: vazio");
-    }
-    else{
-        console.log("[OPÇOES] Local Storage - médio: " + localStorage.getItem('medio'));
+    if (coisaMedio !== 'null/'){
+        console.log("[HIGHSCORES] Local Storage - médio: " + coisaMedio);
+        lido = coisaMedio.split("/");     // tff 154   fg 150    ca 78
+        ctx.fillStyle = "#d6c14d";
+        for (let i = 0; i < lido.length; i++){
+            console.log((i + 1) + "º lugar: " + lido[i]);
+            ctx.font = "50px Myriad Pro";
+            ctx.fillText(lido[i], 330, 300 + 80 * i);
+        }
     }
 
-    if (localStorage.getItem('dificil') === null){
-        console.log("[OPÇOES] Local Storage - difícil: vazio");
+    if (coisaDificil !== 'null/'){
+        console.log("[HIGHSCORES] Local Storage - dificil: " + coisaDificil);
+        lido = coisaDificil.split("/");     // tff 154   fg 150    ca 78
+        ctx.fillStyle = "#d6c14d";
+        for (let i = 0; i < lido.length; i++){
+            console.log((i + 1) + "º lugar: " + lido[i]);
+            ctx.font = "50px Myriad Pro";
+            ctx.fillText(lido[i], 560, 300 + 80 * i);
+        }
     }
-    else{
-        console.log("[OPÇOES] Local Storage - difícil: " + localStorage.getItem('dificil'));
-    }*/
-
-
 
     function listenersButtons(ev){
         if (ev.currentTarget.id === ("voltarBtn")) {
